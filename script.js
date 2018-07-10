@@ -76,25 +76,7 @@ response.json().then(data => {
      
             
     }
-    for(var i = 1; i < list.childElementCount; i++){
-        
-       
-        
-        for(var j = i+1; j < list.childElementCount+1; j++){
-            var l = list.childNodes[i];
-            var k = list.childNodes[j];
-            
-            
-            if ((l.childNodes[3]).innerText<(k.childNodes[3]).innerText)
-            {   list.insertBefore(k,l);
-                
-                
-                
-                
- 
-            }  
-        }
-    }
+    
     if (localStorage.getItem("Sort") == "New"){
         
     for(var i = 1; i < list.childElementCount; i++){
@@ -143,6 +125,25 @@ response.json().then(data => {
             }
         }
      }
+     for(var i = 1; i < list.childElementCount; i++){
+        
+       
+        
+        for(var j = i+1; j < list.childElementCount+1; j++){
+            var l = list.childNodes[i];
+            var k = list.childNodes[j];
+            
+            
+            if ((l.childNodes[3]).innerText<(k.childNodes[3]).innerText)
+            {   list.insertBefore(k,l);
+                
+                
+                
+                
+ 
+            }  
+        }
+    }
  
     
     

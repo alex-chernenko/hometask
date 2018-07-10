@@ -9,6 +9,7 @@
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 </head>
 <body>
+        
     <div class="container"> 
         
         <div class="Filter">Sort By
@@ -18,22 +19,22 @@
             
             <option id="o" value=”Old”>Oldest</option>
         </select>
-            <input type="checkbox" id="Business"/><label for="Business" >Business</label>
-            <input type="checkbox" id="Showbiz"/><label>Showbiz</label>
-            <input type="checkbox" id="Tech"/><label>Tech</label>
-               <input type="checkbox" id="Sport"><label>Sport</label>
-            
-               <input type="checkbox" id="Food"><label>Food</label>
-               <input type="checkbox" id="Politics"><label>Politics</label>
-               <input type="checkbox" id="Culture"><label>Culture</label>
-               
+        <input type="checkbox" name="Business" id="Business"onclick ="SortTags(this)"><label for="Business" >Business</label>
+        <input type="checkbox" name="Showbiz" id="Showbiz"onclick ="SortTags(this)"><label>Showbiz</label>
+        <input type="checkbox" name="Tech" id="Tech"onclick ="SortTags(this)"><label>Tech</label>
+           <input type="checkbox" name="Sport" id="Sport"onclick ="SortTags(this)"><label>Sport</label>
+        
+           <input type="checkbox" name="Food" id="Food"onclick ="SortTags(this)"><label>Food</label>
+           <input type="checkbox" name="Politics" id="Politics"onclick ="SortTags(this)"><label>Politics</label>
+           <input type="checkbox" name="Culture" id="Culture" onclick ="SortTags(this)"><label>Culture</label>
            </div>
         <div class="Search">
-                <input type="text" size="30" onkeyup="showResult(this.value)">
-                <div id="livesearch"></div>
+                        <span id="livesearch">Search</span>
+                
         <ul id="list">
             
         </ul>
+       
         </div>
         
 </body>

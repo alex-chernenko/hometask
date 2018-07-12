@@ -76,7 +76,7 @@ response.json().then(data => {
      
             
     }
-    
+
     
     if (localStorage.getItem("Sort") == "New"){
         
@@ -126,8 +126,9 @@ response.json().then(data => {
             }
         }
      }
-     else {
-        console.log(localStorage.getItem("Sort"));
+     console.log(localStorage.getItem("Sort"))
+         if ((localStorage.getItem("Sort") !== "Old") && (localStorage.getItem("Sort") !== "New") && (localStorage.getItem("Sort") !== ""))
+        {console.log(localStorage.getItem("Sort"));
       
         var arr = localStorage.getItem("Sort").split(',');
         for (i in arr)
@@ -135,31 +136,38 @@ response.json().then(data => {
             document.getElementById(arr[i]).checked = "true";
             
         }
-        
-     }
-     for(var i = 1; i < list.childElementCount; i++){
+        SortTags();
+    }
+        if (localStorage.getItem("Sort") == "")
+        {
+            for(var i = 1; i < list.childElementCount; i++){
         
        
         
-        for(var j = i+1; j < list.childElementCount+1; j++){
-            var l = list.childNodes[i];
-            var k = list.childNodes[j];
-            
-            
-            if ((l.childNodes[3]).innerText<(k.childNodes[3]).innerText)
-            {   list.insertBefore(k,l);
-                
-                
-                
-                
- 
-            }  
+                for(var j = i+1; j < list.childElementCount+1; j++){
+                    var l = list.childNodes[i];
+                    var k = list.childNodes[j];
+                    
+                    
+                    if ((l.childNodes[3]).innerText<(k.childNodes[3]).innerText)
+                    {   list.insertBefore(k,l);
+                        
+                        
+                        
+                        
+         
+                    }  
+                }
+            }
         }
-    }
+       
+        
+     
+    
  
     
     
-    SortTags();
+    
 hide();
 
 
@@ -330,6 +338,72 @@ function SortTags(e) {
       
            
    } 
+   
+   for(var i = 1; i < m+1; i++){
+    console.log(list.childNodes[i]);
+      
+       
+   for(var j = i+1; j < m+1; j++){
+       var l = list.childNodes[i];
+       var k = list.childNodes[j];
+       
+       
+       if ((l.childNodes[3]).innerText<(k.childNodes[3]).innerText)
+       {   list.insertBefore(k,l);
+           
+           
+           
+           
+
+       }  
+   }
+}  
+   for(var i = m+1; i < m+n+1; i++){
+     console.log(list.childNodes[i]);
+       
+        
+    for(var j = i+1; j < m+n+1; j++){
+        var l = list.childNodes[i];
+        var k = list.childNodes[j];
+        
+        
+        if ((l.childNodes[3]).innerText<(k.childNodes[3]).innerText)
+        {   list.insertBefore(k,l);
+            
+            
+            
+            
+
+        }  
+    }
+}  
+console.log(m);
+console.log(m+n+1);
+console.log(list.childNodes.length);
+for(var i = m+n+1; i < list.childNodes.length; i++){
+    console.log(list.childNodes[i]);
+      
+       
+   for(var j = i+1; j < list.childNodes.length; j++){
+       var l = list.childNodes[i];
+       var k = list.childNodes[j];
+       
+       
+       if ((l.childNodes[3]).innerText<(k.childNodes[3]).innerText)
+       {   list.insertBefore(k,l);
+           
+           
+           
+           
+
+       }  
+   }
+}
+   
+    
+    
+
+
 
     hide();
     

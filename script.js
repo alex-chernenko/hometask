@@ -77,6 +77,7 @@ response.json().then(data => {
             
     }
     
+    
     if (localStorage.getItem("Sort") == "New"){
         
     for(var i = 1; i < list.childElementCount; i++){
@@ -99,7 +100,7 @@ response.json().then(data => {
         }
     }
     }
-    console.log(localStorage.getItem("Sort"));
+    
     if (localStorage.getItem("Sort") == "Old"){
         {
         localStorage.setItem('Sort', 'Old');
@@ -125,6 +126,17 @@ response.json().then(data => {
             }
         }
      }
+     else {
+        console.log(localStorage.getItem("Sort"));
+      
+        var arr = localStorage.getItem("Sort").split(',');
+        for (i in arr)
+        {   console.log(document.getElementById(arr[i]).checked);
+            document.getElementById(arr[i]).checked = "true";
+            
+        }
+        
+     }
      for(var i = 1; i < list.childElementCount; i++){
         
        
@@ -147,17 +159,10 @@ response.json().then(data => {
  
     
     
-function hide () {for (let i=11; i<51; i++){
-    var loq = document.getElementById('list');
-        var height = document.getElementById("list").clientHeight;
-    r=loq.childNodes[i];
-   r.style.display = "none";
-
-  }
-  
-}
+    SortTags();
 hide();
-    
+
+
   
 });
 
@@ -176,7 +181,25 @@ hide();
 
 
 };
+function hide () {for (let i=11; i<51; i++){
+    var loq = document.getElementById('list');
+        var height = document.getElementById("list").clientHeight;
+    r=loq.childNodes[i];
+   r.style.display = "none";
 
+  }
+  
+}
+function unhide () {for (let i=11; i<51; i++){
+    var loq = document.getElementById('list');
+        var height = document.getElementById("list").clientHeight;
+    r=loq.childNodes[i];
+   r.style.display = "block";
+
+
+  }
+  
+}
 function Search() {
     var elements = document.getElementsByClassName('title');
     console.log(elements);
@@ -229,7 +252,7 @@ function delete_row(e)
  
  
 function SortTags(e) {
-    
+    unhide();
     var elements = document.getElementsByClassName('tags');
     var bus = document.getElementById("Business");
     var show = document.getElementById("Showbiz");
@@ -238,85 +261,66 @@ function SortTags(e) {
     var food = document.getElementById("Food");
     var polit = document.getElementById("Politics");
     var cult = document.getElementById("Culture");
-         
-        
-        var t = [bus.name,show.name,sport.name,tech.name,food.name,polit.name,cult.name];
+    var p = [bus,show,sport,tech,food,polit,cult];   
+    var t = [bus.name,show.name,sport.name,tech.name,food.name,polit.name,cult.name];
+    var countTags= 0;
+    var checkedTags = [];
+   for (let i=0;i<p.length;i++){
+    if (p[i].checked == true)
+    {
+        checkedTags.push(p[i].name);
+        countTags= countTags+1;
        
+    }
+
+   }
+   localStorage.setItem('Sort', checkedTags);
+   
+   var m = 0;
+   var n = 0;
      
    for (let i=0;i<elements.length;i++)
    {
-    
-       let OneTitle = elements[i];
-       
-       if ((e.checked == true)  && ((OneTitle.innerText).indexOf(e.name) !== -1))
-       {
-          if ((tech.checked == true) && ((OneTitle.innerText).indexOf(e.name) !== -1) && ((OneTitle.innerText).indexOf(tech.name) !== -1))
-          {
-            list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-          }
-          if ((bus.checked == true) && ((OneTitle.innerText).indexOf(e.name) !== -1) && ((OneTitle.innerText).indexOf(bus.name) !== -1))
-          {
-            list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-          }
-          if ((show.checked == true)  && ((OneTitle.innerText).indexOf(e.name) !== -1) && ((OneTitle.innerText).indexOf(show.name) !== -1))
-          {
-            list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-          }
-          if ((sport.checked == true) && ((OneTitle.innerText).indexOf(e.name) !== -1) && ((OneTitle.innerText).indexOf(sport.name) !== -1))
-          {
-            list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-          }
-          if ((food.checked == true)  && ((OneTitle.innerText).indexOf(e.name) !== -1) && ((OneTitle.innerText).indexOf(food.name) !== -1))
-          {
-            list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-          }
-          if ((polit.checked == true) && ((OneTitle.innerText).indexOf(e.name) !== -1) && ((OneTitle.innerText).indexOf(polit.name) !== -1))
-          {
-            list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-          }
-          if ((cult.checked == true)  && ((OneTitle.innerText).indexOf(e.name) !== -1) && ((OneTitle.innerText).indexOf(cult.name) !== -1))
-          {
-            list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-          }
-       }
-        
-    //    if ((tech.checked == true) && (e.checked == true) && (e != tech) && ((OneTitle.innerText).indexOf(tech.name) !== -1) && (((OneTitle.innerText).indexOf(e.name)) !==-1))
-    //    {
-    //     list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-    //    } 
-    //    if ((bus.checked == true) && (e.checked == true) && (e != tech) && ((OneTitle.innerText).indexOf(bus.name) != -1) && (((OneTitle.innerText).indexOf(e.name)) !=-1))
-    //    {
-    //     list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-    //    }
-       
-    //    if ((show.checked == true) && (e.checked == true) && (e != tech) && ((OneTitle.innerText).indexOf(show.name) != -1) && (((OneTitle.innerText).indexOf(e.name)) !=-1))
-    //    {
-    //     list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-    //    }
-      
-    //    if ((sport.checked == true) && (e.checked == true) && (e != tech) && ((OneTitle.innerText).indexOf(sport.name) != -1) && (((OneTitle.innerText).indexOf(e.name)) !=-1))
-    //    {
-    //     list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-    //    }
-    //    if ((food.checked == true)&& (e.checked == true) && (e != tech) && ((OneTitle.innerText).indexOf(food.name) != -1)&& (((OneTitle.innerText).indexOf(e.name)) !=-1))
-    //    {
-    //     list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-    //    }
-    //    if ((polit.checked == true)&& (e.checked == true) && (e != tech) && ((OneTitle.innerText).indexOf(polit.name) != -1)&& (((OneTitle.innerText).indexOf(e.name)) !=-1))
-    //    {
-    //     list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-    //    }
-    //    if ((cult.checked == true)&& (e.checked == true) && (e != tech) && ((OneTitle.innerText).indexOf(cult.name) != -1)&& (((OneTitle.innerText).indexOf(e.name)) !=-1))
-    //    {
-    //     list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
-    //    }
-       
-      
-       
-
      
+       let OneTitle = elements[i];
+       function TagsInPost(p) {
+        let CheckedTagsInPost = 0;
+        for (key in checkedTags){
+        if ((p.innerText).indexOf(checkedTags[key]) !== -1)
+        {
+            CheckedTagsInPost++;
+            
+        }
+        }
+        return CheckedTagsInPost;
+    }
+
+    
+    
+    if  (TagsInPost(OneTitle) == 3)
+  {
+    list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
+    m++;
+    console.log(m);
+  }
+  if (TagsInPost(OneTitle) == 2)
+  {
+    list.insertBefore(OneTitle.parentNode, elements[m].parentNode);
+    n++
+
+  }
+  if (TagsInPost(OneTitle) == 1)
+  {
+    list.insertBefore(OneTitle.parentNode, elements[m+n+1].parentNode);
+    n++
+
+  }
+       
+      
+           
    } 
 
+    hide();
     
     
 }

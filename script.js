@@ -286,6 +286,7 @@ function SortTags(e) {
    
    var m = 0;
    var n = 0;
+   var p = 0;
      
    for (let i=0;i<elements.length;i++)
    {
@@ -332,6 +333,7 @@ function SortTags(e) {
     {
         list.insertBefore(OneTitle.parentNode, elements[m+n].parentNode);
     }
+    p++;
     
   }
        
@@ -380,11 +382,11 @@ function SortTags(e) {
 console.log(m);
 console.log(m+n+1);
 console.log(list.childNodes.length);
-for(var i = m+n+1; i < list.childNodes.length; i++){
+for(var i = m+n+1; i < m+n+p+1; i++){
     console.log(list.childNodes[i]);
       
        
-   for(var j = i+1; j < list.childNodes.length; j++){
+   for(var j = i+1; j < m+n+p+1; j++){
        var l = list.childNodes[i];
        var k = list.childNodes[j];
        

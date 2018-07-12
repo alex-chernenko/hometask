@@ -232,8 +232,8 @@ document.onscroll=function(){
   
   (loq.childNodes[i]).style.display = "block";
   if (i == 1 + 10*p)
-  {
-      p++;
+  {   if (p<4)
+      {p++;}
   }
  }
  
@@ -304,16 +304,27 @@ function SortTags(e) {
     console.log(m);
   }
   if (TagsInPost(OneTitle) == 2)
-  {
-    list.insertBefore(OneTitle.parentNode, elements[m].parentNode);
+  { if (m>0)
+    {
+    list.insertBefore(OneTitle.parentNode, elements[m].parentNode);}
+    else
+    {
+        list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
+    }
     n++
 
   }
   if (TagsInPost(OneTitle) == 1)
-  {
-    list.insertBefore(OneTitle.parentNode, elements[m+n+1].parentNode);
-    n++
-
+  { 
+    if ((m==0) && (n==0))
+    {
+        list.insertBefore(OneTitle.parentNode, elements[0].parentNode);
+    }
+    else
+    {
+        list.insertBefore(OneTitle.parentNode, elements[m+n].parentNode);
+    }
+    
   }
        
       
